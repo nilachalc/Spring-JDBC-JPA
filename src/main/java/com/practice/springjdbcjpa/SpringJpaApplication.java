@@ -33,7 +33,7 @@ public class SpringJpaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		logger.info("New Person: ");
-		System.out.println(personJpaRepository.save(new Person("Suparna", "Rathtala", new Timestamp(new Date().getTime()))));
+		System.out.println(personJpaRepository.save(new Person("Sukla", "Rathtala", new Timestamp(new Date().getTime()))));
 		
 		logger.info("Updated Person: ");
 		System.out.println(personJpaRepository.update(new Person(2,"Nilachal", "Rathtala", new Timestamp(new Date().getTime()))));
