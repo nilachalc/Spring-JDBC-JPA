@@ -19,19 +19,19 @@ public class PersonJDBCRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	public List<Person> findAll() {
-		return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper(Person.class));
+		return jdbcTemplate.query("SELECT * FROM person", new BeanPropertyRowMapper<Person>(Person.class));
 	}
 	
 	public Person findById(Integer id) {
-		return (Person)jdbcTemplate.queryForObject("SELECT * FROM person WHERE id = ?", new Object[] {id}, new RowMapper<Person>() {
+		return (Person)jdbcTemplate.queryForObject("SELECT ID, BIRTHDATE, LOCATION,	NAME FROM person WHERE id = ?", new Object[] {id}, new RowMapper<Person>() {
 
 			@Override
 			public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Person person = new Person();
 				person.setId(rs.getInt(1));
-				person.setName(rs.getString(2));
+				person.setBirthDay(rs.getTimestamp(2));
 				person.setLocation(rs.getString(3));
-				person.setBirthDay(rs.getTimestamp(4));
+				person.setName(rs.getString(4));
 				return person;
 			}
 			

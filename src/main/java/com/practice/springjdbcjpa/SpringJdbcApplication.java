@@ -31,6 +31,6 @@ public class SpringJdbcApplication implements CommandLineRunner {
 			System.out.println(person);
 		}
 		logger.info("He/She is the Person: ");
-		System.out.println(personJDBCRepository.findById(10001));
+		System.out.println(personJDBCRepository.findById(21));
 	}
 }
